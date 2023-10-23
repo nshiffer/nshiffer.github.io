@@ -91,3 +91,10 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Logo Styles */
+.logo {
+    height: 40px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
