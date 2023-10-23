@@ -5,55 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nick Shiffer | Personal Website</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <img src="path_to_your_logo.jpg" alt="Nick's Logo"> 
-        <h1>Nick Shiffer</h1>
-    </header>
+    <nav>
+        <a href="#home">Nick Shiffer</a>
+        <div>
+            <button onclick="location.href='#about'">About</button>
+            <button onclick="location.href='#portfolio'">Portfolio</button>
+            <button onclick="location.href='#contact'">Contact</button>
+        </div>
+    </nav>
 
-    <main>
-        <section id="home">
-            <h2>Welcome</h2>
+    <section id="home">
+        <div>
+            <h1>Welcome to My World</h1>
             <p>Software Engineer | Entrepreneur | Adventurer</p>
-        </section>
+        </div>
+    </section>
 
-        <section id="about">
-            <!-- Your About content ... -->
-        </section>
+    <section id="about" class="fade">
+        <!-- Your About content ... -->
+    </section>
 
-        <section id="portfolio">
-            <h2>What I've Been Up To</h2>
-            <ul>
-                <li><a href="link_to_books_on_amazon">Books I've Published</a></li>
-                <li><a href="link_to_apps">Apps I'm Working On</a></li>
-                <li><a href="link_to_company">Company I'm Working For</a></li>
-            </ul>
-        </section>
+    <section id="portfolio" class="fade">
+        <h2>What I've Been Up To</h2>
+        <ul>
+            <li><a href="link_to_books_on_amazon">Books I've Published</a></li>
+            <li><a href="link_to_apps">Apps I'm Working On</a></li>
+            <li><a href="link_to_company">Company I'm Working For</a></li>
+        </ul>
+    </section>
 
-        <!-- ... Other sections ... -->
-    </main>
+    <!-- Contact section if needed -->
 
     <footer>
         <p>Disclaimer: All content, thoughts, and opinions shared ...</p>
     </footer>
 
-    <!-- JavaScript to add scrolling effects -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll("section");
+        const sections = document.querySelectorAll('.fade');
+        window.addEventListener('scroll', fadeInSections);
 
-            window.addEventListener("scroll", function() {
-                sections.forEach(section => {
-                    const position = section.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.5;
-                    if (position < screenPosition) {
-                        section.classList.add('fadeInUp');
-                    }
-                });
+        function fadeInSections() {
+            const triggerBottom = (window.innerHeight / 5) * 4;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
             });
-        });
+        }
     </script>
 </body>
 </html>
