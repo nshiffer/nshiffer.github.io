@@ -4,60 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nick Shiffer | Personal Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-            header {
-        background-color: #333;
-        color: white;
-        padding: 1rem;
-        text-align: center;
-    }
-
-    main {
-        padding: 2rem;
-    }
-
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    p {
-        margin-bottom: 1rem;
-    }
-</style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
+        <img src="path_to_your_logo.jpg" alt="Nick's Logo"> 
         <h1>Nick Shiffer</h1>
-        <p>Software Engineer | Entrepreneur | Adventurer</p>
     </header>
+
     <main>
-        <h2>About Me</h2>
-        <p>I was born and raised in a small town in Ohio. After graduating Veritas Academy high school, I attended Ohio State University to study computer science and engineering. My passion for technology and innovation led me on a journey that would shape my personal and professional life for years to come.</p>
-            <p>After completing my degree, I moved to Raleigh, North Carolina, where I landed a position at Cisco Systems, a leading global professional services company. This opportunity allowed me to hone my skills as a software engineer, working on a variety of challenging projects. After some time at Accenture, I took up a role at Cisco, a multinational technology conglomerate, where I continued to grow and excel in my field.</p>
+        <section id="home">
+            <h2>Welcome</h2>
+            <p>Software Engineer | Entrepreneur | Adventurer</p>
+        </section>
 
-    <p>In pursuit of new opportunities and a change of scenery, I relocated to Austin, Texas. I continue working with Cisco as a software engineer while also launching my own company, AirJust. AirJust connects passengers on delayed flights with lawyers to help them receive compensation from airlines, revolutionizing the travel industry and providing a valuable service to frustrated travelers.</p>
+        <section id="about">
+            <!-- Your About content ... -->
+        </section>
 
-    <h2>Hobbies & Interests</h2>
-    <p>Despite my busy professional life, I have always maintained a strong commitment to my hobbies and personal interests. I am an accomplished water skier, snow skier, and scuba diver, always seeking new adventures and challenges. As a licensed pilot, I enjoy the freedom and thrill of flying, exploring the skies above the beautiful landscapes of Texas.</p>
+        <section id="portfolio">
+            <h2>What I've Been Up To</h2>
+            <ul>
+                <li><a href="link_to_books_on_amazon">Books I've Published</a></li>
+                <li><a href="link_to_apps">Apps I'm Working On</a></li>
+                <li><a href="link_to_company">Company I'm Working For</a></li>
+            </ul>
+        </section>
 
-    <p>I am also a classically trained pianist, showcasing my dedication to the arts and my creative spirit. My love for writing has led me to publish multiple books on the Amazon bookstore, further demonstrating my diverse range of talents and interests.</p>
+        <!-- ... Other sections ... -->
+    </main>
 
-    <p>Throughout my journey, I have remained true to my roots, carrying the lessons and values I learned in my small Ohio hometown with me. My impressive achievements in both my professional and personal life serve as a testament to my drive, determination, and passion for making the world a better place.</p>
-</main>
+    <footer>
+        <p>Disclaimer: All content, thoughts, and opinions shared ...</p>
+    </footer>
+
+    <!-- JavaScript to add scrolling effects -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section");
+
+            window.addEventListener("scroll", function() {
+                sections.forEach(section => {
+                    const position = section.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.5;
+                    if (position < screenPosition) {
+                        section.classList.add('fadeInUp');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
