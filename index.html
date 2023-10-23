@@ -1,64 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nick Shiffer | Personal Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <nav>
-        <a href="#home">Nick Shiffer</a>
+        <img src="logo.png" alt="Nick's Logo" class="logo"> 
         <div>
-            <button onclick="location.href='#about'">About</button>
-            <button onclick="location.href='#portfolio'">Portfolio</button>
-            <button onclick="location.href='#contact'">Contact</button>
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section id="home">
-        <div>
-            <h1>Welcome to My World</h1>
-            <p>Software Engineer | Entrepreneur | Adventurer</p>
-        </div>
-    </section>
+    <main>
+        <section id="home">
+            <h1>Welcome to Nick Shiffer's World</h1>
+            <p>Software Engineer | Pilot | Scuba Diver</p>
+        </section>
 
-    <section id="about" class="fade">
-        <!-- Your About content ... -->
-    </section>
+        <section id="about">
+            <p>Nick Shiffer, a talented software engineer at Cisco, is not just bound to the confines of coding. With the sky as his playground and the deep blue as his mysterious wonderland, Nick is both a certified pilot and scuba diver. His journey from navigating complex software systems to maneuvering through clouds and exploring underwater realms speaks volumes about his versatility and boundless curiosity. Nick embodies the rare blend of technical prowess and the spirit of adventure, making his story an intriguing tale of bytes, flights, and deep-sea sights.</p>
+        </section>
 
-    <section id="portfolio" class="fade">
-        <h2>What I've Been Up To</h2>
-        <ul>
-            <li><a href="link_to_books_on_amazon">Books I've Published</a></li>
-            <li><a href="link_to_apps">Apps I'm Working On</a></li>
-            <li><a href="link_to_company">Company I'm Working For</a></li>
-        </ul>
-    </section>
-
-    <!-- Contact section if needed -->
+        <section id="portfolio">
+            <h2>Books & More</h2>
+            <ul>
+                <li><a href="https://www.amazon.com/Mastering-Art-Generative-Comprehensive-Engineering/dp/B0C47DWL9C" target="_blank">Mastering the Art of Generative Design</a></li>
+                <li><a href="https://www.amazon.com/Prompt-Engineers-Cookbook-Mastering-Generative-ebook/dp/B0C63VN3CT" target="_blank">Prompt Engineers Cookbook</a></li>
+                <li><a href="https://www.amazon.com/AI-Unleased-Turbocharge-Business-Generative/dp/B0C87VK67Q" target="_blank">AI Unleashed</a></li>
+            </ul>
+        </section>
+    </main>
 
     <footer>
-        <p>Disclaimer: All content, thoughts, and opinions shared ...</p>
+        <p>Disclaimer: All content, thoughts, and opinions shared are my own. All rights reserved.</p>
     </footer>
-
-    <script>
-        const sections = document.querySelectorAll('.fade');
-        window.addEventListener('scroll', fadeInSections);
-
-        function fadeInSections() {
-            const triggerBottom = (window.innerHeight / 5) * 4;
-
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-
-                if (sectionTop < triggerBottom) {
-                    section.classList.add('show');
-                } else {
-                    section.classList.remove('show');
-                }
-            });
-        }
-    </script>
 </body>
+
 </html>
