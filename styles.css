@@ -175,5 +175,26 @@ a img {
         transform: rotate(360deg);
     }
 }
+#connect {
+    color: #EAEAEA;
+}
+
+.social-link {
+    display: inline-block;
+    margin: 10px;
+    color: #EAEAEA;
+    font-size: 1.2em;
+}
+
+.social-link:hover {
+    color: #007BFF;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
 
 
