@@ -11,39 +11,76 @@
 </head>
 
 <body>
-
     <main>
+        <header>
+            <!-- nav bar needs to be full width -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+                <a class="navbar-brand" href="#">Nick Shiffer</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav
+                    ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#books">Books</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </header>
         <section id="home" class="text-center">
-            <h1 class="mr-2">Welcome to Nick Shiffer's World</h1>
-            <p>Software Engineer | Pilot | Scuba Diver</p>
+            <div class="flex-container">
+                <div class="container">
+                    <img src="https://via.placeholder.com/200" alt="Nick Shiffer" class="rounded-circle">
+                </div>
+                <div class="container">
+                    <h1>Welcome to Nick Shiffer's World</h1>
+                    <p>Software Engineer | Startup Consultant | Pilot</p>
+                </div>
+            </div>
         </section>
 
         <section id="about" class="mt-4">
-            <p>[Your about content goes here]</p>
+            <div class="container">
+                <h2>About Me</h2>
+                <p>Hi, I'm Nick Shiffer. I'm a software engineer, startup consultant, and pilot. I've been working in the tech industry for over 4 years and have a passion for building and scaling products. I've worked with companies like Cisco, Accenture and the State of Ohio. I'm also a licensed pilot and enjoy flying in my free time.</p>
+            </div>
         </section>
 
         <section id="projects" class="mt-4">
-            <h2>Websites I'm Working On</h2>
-            <ul class="list-unstyled">
-                <li><a href="https://nshiffer.github.io/wander/" target="_blank">Working Wander</a> - Nomading and working remotely</li>
-                <li><a href="http://www.example-website2.com" target="_blank">Project 2</a> - Description of Project 2</li>
-                <li><a href="http://www.example-website3.com" target="_blank">Project 3</a> - Description of Project 3</li>
-            </ul>
+            <div class="container">
+                <h2>Projects I'm Working On</h2>
+                <ul class="list-unstyled">
+                    <li><a href="https://nshiffer.github.io/wander/" target="_blank">Working Wander</a> - Nomading and working remotely</li>
+                    <li><a href="https://go.airjust.co" target="_blank">Airjust</a> - Flight Compensation Tool</li>
+                    <li><a href="https://chromewebstore.google.com/detail/blocki-wallet-watchdog/cemlhfbciegflkpppmhdjmkoffofibho?pli=1" target="_blank">Blocki Chrome Extension</a> - Protects You From Scams/Hackers</li>
+                </ul>
+            </div>
         </section>
 
         <section id="books" class="mt-4">
-            <h2>Books I've Written</h2>
-            <ul class="list-unstyled">
-                <li><a href="https://www.amazon.com/Mastering-Art-Generative-Comprehensive-Engineering/dp/B0C47DWL9C" target="_blank">Mastering the Art of Generative Design</a></li>
-                <li><a href="https://www.amazon.com/Prompt-Engineers-Cookbook-Mastering-Generative-ebook/dp/B0C63VN3CT" target="_blank">Prompt Engineers Cookbook</a></li>
-                <li><a href="https://www.amazon.com/AI-Unleased-Turbocharge-Business-Generative/dp/B0C87VK67Q" target="_blank">AI Unleashed</a></li>
-            </ul>
+            <div class="container">
+                <h2>My Publications</h2>
+                <ul class="list-unstyled">
+                    <li><a href="https://www.amazon.com/Mastering-Art-Generative-Comprehensive-Engineering/dp/B0C47DWL9C" target="_blank">Mastering the Art of Generative Design</a></li>
+                    <li><a href="https://www.amazon.com/Prompt-Engineers-Cookbook-Mastering-Generative-ebook/dp/B0C63VN3CT" target="_blank">Prompt Engineers Cookbook</a></li>
+                    <li><a href="https://www.amazon.com/AI-Unleased-Turbocharge-Business-Generative/dp/B0C87VK67Q" target="_blank">AI Unleashed</a></li>
+                </ul>
+            </div>
         </section>
     </main>
-
-    <footer class="mt-4">
-        <p class="text-center">Disclaimer: All content, thoughts, and opinions shared are my own. All rights reserved.</p>
-    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
