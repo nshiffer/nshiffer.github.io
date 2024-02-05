@@ -5,42 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nick Shiffer | Personal Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <nav>
-        <img src="logo.png" alt="Nick's Logo" class="logo"> 
-        <div>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#books">Books</a>
-            <a href="#contact">Contact</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="Nick's Logo" class="logo"> 
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#books">Books</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
-    <main>
-        <section id="home">
+    <main class="container mt-4">
+        <section id="home" class="text-center">
             <h1>Welcome to Nick Shiffer's World</h1>
             <p>Software Engineer | Pilot | Scuba Diver</p>
         </section>
 
-        <section id="about">
+        <section id="about" class="mt-4">
             <p>[Your about content goes here]</p>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="mt-4">
             <h2>Websites I'm Working On</h2>
-            <ul>
-                <li><a href="https://nshiffer.github.io/wander" target="_blank">Work and Wander - My nomadic experience</li>
+            <ul class="list-unstyled">
+                <li><a href="http://www.example-website1.com" target="_blank">Project 1</a> - Description of Project 1</li>
                 <li><a href="http://www.example-website2.com" target="_blank">Project 2</a> - Description of Project 2</li>
                 <li><a href="http://www.example-website3.com" target="_blank">Project 3</a> - Description of Project 3</li>
             </ul>
         </section>
 
-        <section id="books">
+        <section id="books" class="mt-4">
             <h2>Books I've Written</h2>
-            <ul>
+            <ul class="list-unstyled">
                 <li><a href="https://www.amazon.com/Mastering-Art-Generative-Comprehensive-Engineering/dp/B0C47DWL9C" target="_blank">Mastering the Art of Generative Design</a></li>
                 <li><a href="https://www.amazon.com/Prompt-Engineers-Cookbook-Mastering-Generative-ebook/dp/B0C63VN3CT" target="_blank">Prompt Engineers Cookbook</a></li>
                 <li><a href="https://www.amazon.com/AI-Unleased-Turbocharge-Business-Generative/dp/B0C87VK67Q" target="_blank">AI Unleashed</a></li>
@@ -48,9 +57,15 @@
         </section>
     </main>
 
-    <footer>
-        <p>Disclaimer: All content, thoughts, and opinions shared are my own. All rights reserved.</p>
+    <footer class="mt-4">
+        <p class="text-center">Disclaimer: All content, thoughts, and opinions shared are my own. All rights reserved.</p>
     </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
