@@ -1,17 +1,39 @@
-document.addEventListener('scroll', function() {
-    const scrollPosition = window.scrollY;
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
 
-    // Rotate the shape in the home section
-    const homeShape = document.getElementById('shape-home');
-    if (homeShape) {
-        homeShape.style.transform = `translate(-50%, -50%) rotate(${scrollPosition}deg)`;
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
     }
+});
 
-    // Move the shape in the about section horizontally
-    const aboutShape = document.getElementById('shape-about');
-    if (aboutShape) {
-        aboutShape.style.transform = `translate(-50%, -50%) translateX(${scrollPosition}px)`;
-    }
+// Close mobile nav on link click
+document.querySelectorAll('.nav-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+        document.querySelector('.nav-links').classList.remove('active');
+    });
+});
 
-    // Add more transformations for other shapes
+// Scroll-triggered fade-in animations
+const fadeElements = document.querySelectorAll('.section-title, .about-text, .about-highlights, .project-card, .book-card, .connect-text, .social-links, .hero-greeting, .hero-name, .hero-tagline, .hero-cta');
+
+fadeElements.forEach(function (el) {
+    el.classList.add('fade-in');
+});
+
+const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+fadeElements.forEach(function (el) {
+    observer.observe(el);
 });
