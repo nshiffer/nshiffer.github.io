@@ -1,0 +1,84 @@
+---
+const projects = [
+  {
+    index: '01',
+    name: 'LinkStreaks',
+    role: 'Founder & Sole Developer',
+    description: 'Gamified link-in-bio SaaS where fans earn points, build streaks, and unlock exclusive content. Turning passive followers into engaged communities.',
+    url: 'https://linkstreaks.com',
+  },
+  {
+    index: '02',
+    name: 'Airjust',
+    role: 'Co-Founder & Lead Developer',
+    description: 'Flight compensation platform helping passengers claim up to £520 for delayed or cancelled flights under EU/UK regulations. No win, no fee.',
+    url: 'https://airjust.co',
+  },
+  {
+    index: '03',
+    name: 'SHWRK',
+    role: 'Founder',
+    description: 'Development hub hosting a suite of innovative web applications across sports analytics, developer tooling, and data utilities.',
+    url: 'https://shwrk.com',
+  },
+  {
+    index: '04',
+    name: 'LNCH CTRL',
+    role: 'Sole Developer',
+    description: 'Retro mission-control dashboard for live rocket launch tracking. Pulls from The Space Devs API with real-time launch status and space news.',
+    url: 'https://nshiffer.github.io/space-tracker/',
+  },
+  {
+    index: '05',
+    name: 'Dev Converter',
+    role: 'Sole Developer',
+    description: '40 privacy-first developer utility tools — encoding, hashing, formatting, and more. Runs 100% client-side. Your data never leaves the browser.',
+    url: 'https://converter.shwrk.com',
+  },
+  {
+    index: '06',
+    name: 'Fantasy Dashboard',
+    role: 'Sole Developer',
+    description: 'Dynasty fantasy football analytics dashboard for Sleeper leagues. Surfaces standings, matchups, roster analysis, and draft data beyond the native app.',
+    url: 'https://fantasyfootball.shwrk.com',
+  },
+];
+---
+
+<section id="projects" class="py-24 md:py-32 px-8 md:px-16 lg:px-24 reveal-section opacity-0 translate-y-8 transition-all duration-700 ease-out">
+  <p class="font-mono text-accent text-xs tracking-widest mb-12">[PROJECTS]</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+    {projects.map((project) => (
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block bg-bg p-8 hover:bg-surface transition-colors duration-200"
+      >
+        <div class="flex items-start justify-between mb-6">
+          <span class="font-mono text-xs text-muted">{project.index}</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-border group-hover:text-muted transition-colors"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+
+        <h2 class="font-display font-bold text-xl text-white mb-2 group-hover:text-accent transition-colors duration-200">
+          {project.name}
+        </h2>
+
+        <p class="font-mono text-xs text-accent mb-4">&gt; {project.role}</p>
+
+        <p class="font-body text-sm text-muted leading-relaxed">
+          {project.description}
+        </p>
+      </a>
+    ))}
+  </div>
+</section>
