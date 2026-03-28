@@ -3,47 +3,36 @@ const books = [
   {
     title: 'Mastering the Art of Generative Design',
     url: 'https://www.amazon.com/Mastering-Art-Generative-Comprehensive-Engineering/dp/B0C47DWL9C',
-    description: 'A comprehensive guide to generative engineering and AI-driven design.',
   },
   {
     title: 'Prompt Engineers Cookbook',
     url: 'https://www.amazon.com/Prompt-Engineers-Cookbook-Mastering-Generative-ebook/dp/B0C63VN3CT',
-    description: 'Recipes and techniques for mastering generative AI prompts.',
   },
   {
     title: 'AI Unleashed',
     url: 'https://www.amazon.com/AI-Unleased-Turbocharge-Business-Generative/dp/B0C87VK67Q',
-    description: 'How to turbocharge your business with generative AI.',
   },
 ];
 ---
 
-<section id="publications" class="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-dark-lighter reveal-section opacity-0 translate-y-8 transition-all duration-700 ease-out">
-  <div class="max-w-6xl mx-auto">
-    <p class="text-sm font-medium tracking-widest uppercase mb-4 text-accent">Publications</p>
-    <h2 class="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white mb-12 tracking-tight">
-      Books
-    </h2>
+<section id="writing" class="py-24 md:py-32 px-8 md:px-16 lg:px-24 reveal-section opacity-0 translate-y-8 transition-all duration-700 ease-out border-t border-border">
+  <p class="font-mono text-accent text-xs tracking-widest mb-12">[WRITING]</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {books.map((book) => (
-        <a
-          href={book.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group block p-6 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300"
-        >
-          <h3 class="font-display font-bold text-lg text-white group-hover:text-accent transition-colors mb-2">
-            {book.title}
-          </h3>
-          <p class="text-sm text-gray-500 leading-relaxed">
-            {book.description}
-          </p>
-          <span class="inline-block mt-4 text-xs font-medium tracking-wider uppercase text-gray-600 group-hover:text-accent transition-colors">
-            View on Amazon →
-          </span>
-        </a>
-      ))}
-    </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+    {books.map((book) => (
+      <a
+        href={book.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block bg-bg p-8 hover:bg-surface transition-colors duration-200"
+      >
+        <h3 class="font-display font-bold text-base text-white mb-4 group-hover:text-accent transition-colors duration-200 leading-snug">
+          {book.title}
+        </h3>
+        <span class="font-mono text-xs text-muted group-hover:text-accent transition-colors">
+          &gt; amazon →
+        </span>
+      </a>
+    ))}
   </div>
 </section>
