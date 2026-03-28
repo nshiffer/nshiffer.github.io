@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
-import ProjectSection from '../components/ProjectSection.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
 import Publications from '../components/Publications.astro';
 import Footer from '../components/Footer.astro';
 ---
@@ -11,36 +11,7 @@ import Footer from '../components/Footer.astro';
   <Nav />
   <main>
     <Hero />
-
-    <div id="projects">
-      <ProjectSection
-        name="LinkStreaks"
-        role="Founder & Sole Developer"
-        description="A gamified link-in-bio platform where fans earn points, build streaks, and unlock exclusive content. Turning passive followers into engaged, returning fans."
-        url="https://linkstreaks.com"
-        accentColor="#7c3aed"
-        align="left"
-      />
-
-      <ProjectSection
-        name="Airjust"
-        role="Co-Founder & Lead Developer"
-        description="Built and scaled a flight compensation platform helping passengers claim up to £520 for delayed, cancelled, or overbooked flights under EU/UK regulations."
-        url="https://airjust.co"
-        accentColor="#22c55e"
-        align="right"
-      />
-
-      <ProjectSection
-        name="SHWRK"
-        role="Founder"
-        description="A development hub for innovative web applications — from fantasy football tools to privacy-focused data converters."
-        url="https://shwrk.com"
-        accentColor="#2d8db5"
-        align="left"
-      />
-    </div>
-
+    <ProjectGrid />
     <Publications />
     <Footer />
   </main>
