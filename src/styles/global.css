@@ -1,18 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
 
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Playfair Display", serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
   --font-body: "Inter", sans-serif;
 
-  --color-dark: #0a0a0a;
-  --color-dark-lighter: #141414;
-  --color-accent: #e07a2f;
-  --color-accent-coral: #e05c5c;
-  --color-project-linkstreaks: #7c3aed;
-  --color-project-airjust: #22c55e;
-  --color-project-shwrk: #2d8db5;
+  --color-bg: #000000;
+  --color-surface: #0a0a0a;
+  --color-border: #1f1f1f;
+  --color-border-hover: #333333;
+  --color-text: #ffffff;
+  --color-muted: #6b7280;
+  --color-accent: #4ade80;
 }
 
 @layer base {
@@ -21,7 +22,7 @@
   }
   body {
     font-family: 'Inter', sans-serif;
-    background-color: #0a0a0a;
-    color: #eaeaea;
+    background-color: #000000;
+    color: #ffffff;
   }
 }
