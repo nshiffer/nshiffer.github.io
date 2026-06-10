@@ -10,13 +10,28 @@
   ></div>
 
   <!-- Content -->
-  <div class="relative z-10 px-8 md:px-16 lg:px-24 pt-24 pb-16">
-    <p class="font-mono text-accent text-sm md:text-base mb-6 tracking-wide">
-      &gt; founder. engineer. builder.
+  <div class="relative z-10 w-full px-8 md:px-16 lg:px-24 pt-24 pb-16">
+    <p class="font-mono text-muted text-sm md:text-base mb-6 tracking-wide">
+      ~ <span class="text-accent">$</span> whoami
     </p>
     <h1 class="font-display font-bold text-white leading-[0.9] tracking-tight text-[clamp(3.5rem,12vw,9rem)]">
       NICK<br />SHIFFER
     </h1>
+
+    <p class="font-mono text-accent text-sm md:text-base mt-8 max-w-2xl leading-relaxed min-h-[3.5rem]">
+      <span
+        id="typed-line"
+        data-text="AI/full-stack engineer. Founder of LinkStreaks & PourMath. Author of three books on generative AI."
+      ></span><span class="cursor-blink" aria-hidden="true">█</span>
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      {['llm-apps', 'agents', 'rag', 'prompt-engineering', 'full-stack'].map((chip) => (
+        <span class="font-mono text-xs text-muted border border-border px-3 py-1.5 tracking-wide">
+          {chip}
+        </span>
+      ))}
+    </div>
   </div>
 
   <!-- Scroll indicator -->
@@ -26,3 +41,20 @@
     </svg>
   </div>
 </section>
+
+<script>
+  const el = document.getElementById('typed-line');
+  const full = el?.dataset.text ?? '';
+  if (el) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = full;
+    } else {
+      let i = 0;
+      const tick = () => {
+        el.textContent = full.slice(0, ++i);
+        if (i < full.length) setTimeout(tick, 16 + Math.random() * 28);
+      };
+      setTimeout(tick, 500);
+    }
+  }
+</script>
