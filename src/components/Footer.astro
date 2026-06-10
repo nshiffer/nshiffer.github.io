@@ -1,5 +1,5 @@
 ---
-import { socials } from '../data/site';
+import { books, socials } from '../data/site';
 
 const icons: Record<string, string> = {
   linkedin:
@@ -29,6 +29,20 @@ const labels: Record<string, string> = { linkedin: 'LinkedIn', github: 'GitHub' 
       </a>
     ))}
   </div>
+
+  <p class="font-mono text-xs text-muted/70 mb-12">
+    <span class="text-muted">author of:</span>
+    {books.map((book, i) => (
+      <>
+        <a
+          href={book.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-accent transition-colors underline underline-offset-4 decoration-border"
+        >{book.title}</a>{i < books.length - 1 && <span class="text-border"> · </span>}
+      </>
+    ))}
+  </p>
 
   <p class="font-mono text-xs text-border">
     &copy; {new Date().getFullYear()} Nick Shiffer
