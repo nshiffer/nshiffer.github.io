@@ -1,0 +1,56 @@
+---
+const tools = [
+  {
+    name: 'llm_engineering',
+    description: 'Production LLM features — Claude & GPT APIs, streaming, structured outputs, tool use, and evals.',
+  },
+  {
+    name: 'agents_and_rag',
+    description: 'Autonomous agents, retrieval pipelines, vector search, and MCP integrations that actually ship.',
+  },
+  {
+    name: 'prompt_engineering',
+    description: 'Wrote the cookbook on it. System prompts, guardrails, and squeezing reliability out of nondeterministic models.',
+  },
+  {
+    name: 'full_stack',
+    description: 'TypeScript, React, Astro, Node, Python, Postgres. From idea to deployed product, solo.',
+  },
+  {
+    name: 'security',
+    description: 'Penetration testing background. Builds with an attacker’s mindset — including against LLM apps.',
+  },
+  {
+    name: 'zero_to_one',
+    description: 'Founder reps: scoping, building, launching, and iterating on SaaS products end to end.',
+  },
+];
+---
+
+<section id="about" class="py-24 md:py-32 px-8 md:px-16 lg:px-24 reveal-section opacity-0 translate-y-8 transition-all duration-700 ease-out border-t border-border">
+  <p class="font-mono text-accent text-xs tracking-widest mb-12">[SYSTEM_PROMPT]</p>
+
+  <div class="border border-border bg-surface p-6 md:p-8 overflow-x-auto">
+    <pre class="font-mono text-sm leading-relaxed text-muted whitespace-pre-wrap">{'{'}
+  <span class="text-white">"role"</span>: <span class="text-accent">"system"</span>,
+  <span class="text-white">"content"</span>: <span class="text-accent">"You are talking to Nick Shiffer — an AI/full-stack
+    engineer who ships LLM-powered products end to end.
+    Building AI features by day, SaaS products by night.
+    Previously: founder, penetration tester. Author of
+    three books on generative AI. Responds best to
+    interesting problems."</span>
+{'}'}</pre>
+  </div>
+
+  <p class="font-mono text-muted text-xs tracking-widest mt-20 mb-8">// tools available in this context</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+    {tools.map((tool, i) => (
+      <div class="bg-bg p-8 hover:bg-surface transition-colors duration-200">
+        <p class="font-mono text-xs text-muted mb-4">tool_0{i + 1}</p>
+        <h3 class="font-mono font-medium text-accent text-base mb-3">{tool.name}()</h3>
+        <p class="font-body text-sm text-muted leading-relaxed">{tool.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
