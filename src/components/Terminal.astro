@@ -1,0 +1,252 @@
+<section id="terminal" class="py-24 md:py-32 px-8 md:px-16 lg:px-24 reveal-section opacity-0 translate-y-8 transition-all duration-700 ease-out border-t border-border">
+  <p class="font-mono text-accent text-xs tracking-widest mb-4">[TERMINAL]</p>
+  <p class="font-body text-sm text-muted mb-12 max-w-xl">
+    A real shell would be overkill. This one isn't. Type <span class="font-mono text-accent">help</span> to get started.
+  </p>
+
+  <div id="term-window" class="border border-border bg-surface cursor-text">
+    <!-- Title bar -->
+    <div class="flex items-center gap-2 px-4 py-3 border-b border-border select-none">
+      <span class="h-3 w-3 rounded-full bg-border"></span>
+      <span class="h-3 w-3 rounded-full bg-border"></span>
+      <span class="h-3 w-3 rounded-full bg-border"></span>
+      <span class="font-mono text-xs text-muted ml-3">guest@nshiffer: ~</span>
+    </div>
+
+    <!-- Output + input -->
+    <div id="term-body" class="p-4 md:p-6 h-80 md:h-96 overflow-y-auto font-mono text-sm leading-relaxed">
+      <div id="term-output" aria-live="polite"></div>
+      <div class="flex items-center">
+        <span class="text-accent whitespace-nowrap mr-2">guest@nshiffer:~$</span>
+        <input
+          id="term-input"
+          type="text"
+          class="flex-1 bg-transparent text-white outline-none border-none font-mono text-sm caret-[#4ade80]"
+          autocomplete="off"
+          autocapitalize="off"
+          autocorrect="off"
+          spellcheck="false"
+          aria-label="Terminal input"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { skills, projects, books, socials } from '../data/site';
+
+  const output = document.getElementById('term-output');
+  const input = document.getElementById('term-input') as HTMLInputElement | null;
+  const body = document.getElementById('term-body');
+  const win = document.getElementById('term-window');
+  if (!output || !input || !body || !win) throw new Error('terminal: missing elements');
+
+  const esc = (s: string) =>
+    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  const link = (url: string, label?: string) =>
+    `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer" class="text-accent underline underline-offset-4 hover:text-white transition-colors">${esc(label ?? url)}</a>`;
+
+  const pad = (s: string, n: number) => s + '&nbsp;'.repeat(Math.max(1, n - s.length));
+
+  const files = ['about.txt', 'contact.txt', 'skills.txt', 'projects/', 'books/'];
+
+  const history: string[] = [];
+  let historyIndex = 0;
+
+  const aboutLines = [
+    'Nick Shiffer — AI/full-stack engineer.',
+    'Ships LLM-powered products end to end. Building AI features by day,',
+    'SaaS products by night. Previously: founder, penetration tester.',
+    'Author of three books on generative AI.',
+  ];
+
+  const skillLines = () => [
+    '<span class="text-white">available skills:</span>',
+    ...skills.map((s) => `  ${pad(s.name, 20)}<span class="text-muted">${esc(s.description)}</span>`),
+  ];
+
+  const projectLines = () => [
+    '<span class="text-white">projects:</span>',
+    ...projects.map((p) => `  ${pad(p.slug, 19)}${link(p.url)}`),
+    '<span class="text-muted">hint: \'man &lt;project&gt;\' for details</span>',
+  ];
+
+  const bookLines = () => [
+    '<span class="text-white">published books:</span>',
+    ...books.map((b, i) => `  vol_0${i + 1}  ${link(b.url, b.title)}`),
+  ];
+
+  const contactLines = () => [
+    '<span class="text-white">reach me:</span>',
+    ...socials.map((s) => `  ${pad(s.name, 10)}${link(s.url)}`),
+  ];
+
+  type Command = { desc: string; run: (args: string[]) => string[] };
+
+  const commands: Record<string, Command> = {
+    help: {
+      desc: 'list available commands',
+      run: () => [
+        '<span class="text-white">nsh — available commands:</span>',
+        ...Object.entries(commands).map(
+          ([name, c]) => `  ${pad(name, 12)}<span class="text-muted">${esc(c.desc)}</span>`,
+        ),
+        '<span class="text-muted">tip: tab completes, arrows browse history, \'skills()\' works too</span>',
+      ],
+    },
+    whoami: { desc: 'who you are talking to', run: () => aboutLines.map(esc) },
+    skills: { desc: 'list skills / capabilities', run: skillLines },
+    projects: { desc: 'list shipped projects', run: projectLines },
+    books: { desc: 'list published books', run: bookLines },
+    contact: { desc: 'how to reach nick', run: contactLines },
+    man: {
+      desc: 'manual page for a project',
+      run: (args) => {
+        if (!args.length) return ['What manual page do you want?', 'Try: man pourmath'];
+        const p = projects.find((x) => x.slug === args[0].toLowerCase());
+        if (!p) return [`No manual entry for ${esc(args[0])}`];
+        return [
+          `<span class="text-white">NAME</span>`,
+          `  ${esc(p.slug)}`,
+          `<span class="text-white">DESCRIPTION</span>`,
+          `  ${esc(p.description)}`,
+          `<span class="text-white">SEE ALSO</span>`,
+          `  ${link(p.url)}`,
+        ];
+      },
+    },
+    ls: {
+      desc: 'list directory contents',
+      run: (args) => {
+        const target = (args[0] ?? '').replace(/\/$/, '');
+        if (!target || target === '.' || target === '~') {
+          return [files.map((f) => (f.endsWith('/') ? `<span class="text-accent">${f}</span>` : esc(f))).join('  ')];
+        }
+        if (target === 'projects') return [projects.map((p) => esc(p.slug)).join('  ')];
+        if (target === 'books') return [books.map((_, i) => `vol_0${i + 1}.pdf`).join('  ')];
+        return [`ls: cannot access '${esc(args[0])}': No such file or directory`];
+      },
+    },
+    cat: {
+      desc: 'print file contents',
+      run: (args) => {
+        if (!args.length) return ['usage: cat &lt;file&gt;'];
+        const f = args[0].replace(/^~\//, '').replace(/^\.\//, '');
+        if (f === 'about.txt') return aboutLines.map(esc);
+        if (f === 'skills.txt') return skillLines();
+        if (f === 'contact.txt') return contactLines();
+        if (f === 'projects' || f === 'projects/') return ['cat: projects: Is a directory'];
+        if (f === 'books' || f === 'books/') return ['cat: books: Is a directory'];
+        return [`cat: ${esc(args[0])}: No such file or directory`];
+      },
+    },
+    echo: { desc: 'print text back', run: (args) => [esc(args.join(' '))] },
+    pwd: { desc: 'print working directory', run: () => ['/home/guest'] },
+    date: { desc: 'print current date', run: () => [new Date().toString()] },
+    history: { desc: 'show command history', run: () => history.map((h, i) => `  ${i + 1}  ${esc(h)}`) },
+    clear: { desc: 'clear the screen', run: () => [] },
+    sudo: {
+      desc: 'become root (good luck)',
+      run: () => ['guest is not in the sudoers file.', 'This incident will be reported.'],
+    },
+    exit: { desc: 'leave the shell', run: () => ['logout', '<span class="text-muted">(just kidding — you can scroll away whenever)</span>'] },
+  };
+
+  function print(lines: string[], className = 'text-muted') {
+    for (const line of lines) {
+      const div = document.createElement('div');
+      div.className = `${className} whitespace-pre-wrap break-words`;
+      div.innerHTML = line || '&nbsp;';
+      output.appendChild(div);
+    }
+  }
+
+  function printPrompt(cmd: string) {
+    const div = document.createElement('div');
+    div.className = 'whitespace-pre-wrap break-words';
+    div.innerHTML = `<span class="text-accent">guest@nshiffer:~$</span> <span class="text-white">${esc(cmd)}</span>`;
+    output.appendChild(div);
+  }
+
+  function run(raw: string) {
+    const trimmed = raw.trim();
+    printPrompt(trimmed);
+    if (trimmed) {
+      history.push(trimmed);
+      // allow function-call style: skills() -> skills
+      const parts = trimmed.replace(/\(\s*\)\s*$/, '').split(/\s+/);
+      const name = parts[0].toLowerCase();
+      const args = parts.slice(1);
+      const cmd = commands[name];
+      if (name === 'clear') {
+        output.innerHTML = '';
+      } else if (cmd) {
+        print(cmd.run(args));
+      } else if (name === 'rm') {
+        print(['rm: nice try.']);
+      } else {
+        print([`nsh: command not found: ${esc(name)}`, `<span class="text-muted">type 'help' for a list of commands</span>`]);
+      }
+    }
+    historyIndex = history.length;
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function complete(value: string) {
+    const parts = value.split(/\s+/);
+    const candidates =
+      parts.length <= 1
+        ? Object.keys(commands)
+        : parts[0] === 'cat' || parts[0] === 'ls'
+          ? files
+          : parts[0] === 'man'
+            ? projects.map((p) => p.slug)
+            : [];
+    const last = parts[parts.length - 1];
+    const matches = candidates.filter((c) => c.startsWith(last));
+    if (matches.length === 1) {
+      parts[parts.length - 1] = matches[0];
+      input.value = parts.join(' ') + (matches[0].endsWith('/') ? '' : ' ');
+    } else if (matches.length > 1) {
+      printPrompt(value);
+      print([matches.join('  ')]);
+      body.scrollTop = body.scrollHeight;
+    }
+  }
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      run(input.value);
+      input.value = '';
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (historyIndex > 0) input.value = history[--historyIndex];
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex < history.length - 1) {
+        input.value = history[++historyIndex];
+      } else {
+        historyIndex = history.length;
+        input.value = '';
+      }
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      complete(input.value);
+    } else if (e.key === 'l' && e.ctrlKey) {
+      e.preventDefault();
+      output.innerHTML = '';
+    }
+  });
+
+  win.addEventListener('click', () => {
+    if (!window.getSelection()?.toString()) input.focus();
+  });
+
+  print([
+    `<span class="text-white">Welcome to nsh v1.0.0</span> <span class="text-muted">(nick shell — a very small shell)</span>`,
+    `<span class="text-muted">Type <span class="text-accent">help</span> to see available commands. Try <span class="text-accent">skills()</span>.</span>`,
+    '',
+  ]);
+</script>
