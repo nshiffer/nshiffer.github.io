@@ -34,35 +34,7 @@
 </section>
 
 <script>
-  const skills = [
-    { name: 'llm_engineering', desc: 'Production LLM features — Claude & GPT APIs, streaming, structured outputs, tool use, evals.' },
-    { name: 'agents_and_rag', desc: 'Autonomous agents, retrieval pipelines, vector search, MCP integrations.' },
-    { name: 'prompt_engineering', desc: 'Wrote the cookbook on it. System prompts, guardrails, reliability.' },
-    { name: 'full_stack', desc: 'TypeScript, React, Astro, Node, Python, Postgres.' },
-    { name: 'security', desc: 'Penetration testing background. Attacker mindset, including against LLM apps.' },
-    { name: 'zero_to_one', desc: 'Founder reps: scoping, building, launching, iterating on SaaS end to end.' },
-  ];
-
-  const projects = [
-    { name: 'pourmath', url: 'https://pourmath.com', desc: 'Pour cost & pricing math for bars and restaurants.' },
-    { name: 'linkstreaks', url: 'https://linkstreaks.com', desc: 'Gamified link-in-bio SaaS with points, streaks, unlocks.' },
-    { name: 'airjust', url: 'https://airjust.co', desc: 'Flight compensation platform for delayed/cancelled flights.' },
-    { name: 'shwrk', url: 'https://shwrk.com', desc: 'Development hub hosting a suite of web applications.' },
-    { name: 'lnch-ctrl', url: 'https://nshiffer.github.io/space-tracker/', desc: 'Retro mission-control dashboard for live rocket launches.' },
-    { name: 'dev-converter', url: 'https://converter.shwrk.com', desc: '40 privacy-first developer utility tools, 100% client-side.' },
-    { name: 'fantasy-dashboard', url: 'https://fantasyfootball.shwrk.com', desc: 'Dynasty fantasy football analytics for Sleeper leagues.' },
-  ];
-
-  const books = [
-    { name: 'Mastering the Art of Generative Design', url: 'https://www.amazon.com/Mastering-Art-Generative-Comprehensive-Engineering/dp/B0C47DWL9C' },
-    { name: 'Prompt Engineers Cookbook', url: 'https://www.amazon.com/Prompt-Engineers-Cookbook-Mastering-Generative-ebook/dp/B0C63VN3CT' },
-    { name: 'AI Unleashed', url: 'https://www.amazon.com/AI-Unleased-Turbocharge-Business-Generative/dp/B0C87VK67Q' },
-  ];
-
-  const socials = [
-    { name: 'github', url: 'https://github.com/nshiffer' },
-    { name: 'linkedin', url: 'https://www.linkedin.com/in/nicholas-shiffer-9593a6175' },
-  ];
+  import { skills, projects, books, socials } from '../data/site';
 
   const output = document.getElementById('term-output');
   const input = document.getElementById('term-input') as HTMLInputElement | null;
@@ -92,18 +64,18 @@
 
   const skillLines = () => [
     '<span class="text-white">available skills:</span>',
-    ...skills.map((s) => `  ${pad(s.name, 20)}<span class="text-muted">${esc(s.desc)}</span>`),
+    ...skills.map((s) => `  ${pad(s.name, 20)}<span class="text-muted">${esc(s.description)}</span>`),
   ];
 
   const projectLines = () => [
     '<span class="text-white">projects:</span>',
-    ...projects.map((p) => `  ${pad(p.name, 19)}${link(p.url)}`),
+    ...projects.map((p) => `  ${pad(p.slug, 19)}${link(p.url)}`),
     '<span class="text-muted">hint: \'man &lt;project&gt;\' for details</span>',
   ];
 
   const bookLines = () => [
     '<span class="text-white">published books:</span>',
-    ...books.map((b, i) => `  vol_0${i + 1}  ${link(b.url, b.name)}`),
+    ...books.map((b, i) => `  vol_0${i + 1}  ${link(b.url, b.title)}`),
   ];
 
   const contactLines = () => [
@@ -133,13 +105,13 @@
       desc: 'manual page for a project',
       run: (args) => {
         if (!args.length) return ['What manual page do you want?', 'Try: man pourmath'];
-        const p = projects.find((x) => x.name === args[0].toLowerCase());
+        const p = projects.find((x) => x.slug === args[0].toLowerCase());
         if (!p) return [`No manual entry for ${esc(args[0])}`];
         return [
           `<span class="text-white">NAME</span>`,
-          `  ${esc(p.name)}`,
+          `  ${esc(p.slug)}`,
           `<span class="text-white">DESCRIPTION</span>`,
-          `  ${esc(p.desc)}`,
+          `  ${esc(p.description)}`,
           `<span class="text-white">SEE ALSO</span>`,
           `  ${link(p.url)}`,
         ];
@@ -152,7 +124,7 @@
         if (!target || target === '.' || target === '~') {
           return [files.map((f) => (f.endsWith('/') ? `<span class="text-accent">${f}</span>` : esc(f))).join('  ')];
         }
-        if (target === 'projects') return [projects.map((p) => esc(p.name)).join('  ')];
+        if (target === 'projects') return [projects.map((p) => esc(p.slug)).join('  ')];
         if (target === 'books') return [books.map((_, i) => `vol_0${i + 1}.pdf`).join('  ')];
         return [`ls: cannot access '${esc(args[0])}': No such file or directory`];
       },
@@ -230,7 +202,7 @@
         : parts[0] === 'cat' || parts[0] === 'ls'
           ? files
           : parts[0] === 'man'
-            ? projects.map((p) => p.name)
+            ? projects.map((p) => p.slug)
             : [];
     const last = parts[parts.length - 1];
     const matches = candidates.filter((c) => c.startsWith(last));

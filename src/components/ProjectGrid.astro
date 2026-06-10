@@ -1,69 +1,12 @@
 ---
-const projects = [
-  {
-    index: '01',
-    name: 'PourMath',
-    role: 'Founder & Sole Developer',
-    description: 'Pour cost and pricing math for bars and restaurants — price drinks, track margins, and keep every pour profitable.',
-    url: 'https://pourmath.com',
-    tags: ['saas', 'hospitality'],
-  },
-  {
-    index: '02',
-    name: 'LinkStreaks',
-    role: 'Founder & Sole Developer',
-    description: 'Gamified link-in-bio SaaS where fans earn points, build streaks, and unlock exclusive content. Turning passive followers into engaged communities.',
-    url: 'https://linkstreaks.com',
-    tags: ['saas', 'gamification'],
-  },
-  {
-    index: '03',
-    name: 'Airjust',
-    role: 'Co-Founder & Lead Developer',
-    description: 'Flight compensation platform helping passengers claim up to £520 for delayed or cancelled flights under EU/UK regulations. No win, no fee.',
-    url: 'https://airjust.co',
-    tags: ['saas', 'legal-tech'],
-  },
-  {
-    index: '04',
-    name: 'SHWRK',
-    role: 'Founder',
-    description: 'Development hub hosting a suite of innovative web applications across sports analytics, developer tooling, and data utilities.',
-    url: 'https://shwrk.com',
-    tags: ['platform'],
-  },
-  {
-    index: '05',
-    name: 'LNCH CTRL',
-    role: 'Sole Developer',
-    description: 'Retro mission-control dashboard for live rocket launch tracking. Pulls from The Space Devs API with real-time launch status and space news.',
-    url: 'https://nshiffer.github.io/space-tracker/',
-    tags: ['realtime', 'api'],
-  },
-  {
-    index: '06',
-    name: 'Dev Converter',
-    role: 'Sole Developer',
-    description: '40 privacy-first developer utility tools — encoding, hashing, formatting, and more. Runs 100% client-side. Your data never leaves the browser.',
-    url: 'https://converter.shwrk.com',
-    tags: ['dev-tools', 'client-side'],
-  },
-  {
-    index: '07',
-    name: 'Fantasy Dashboard',
-    role: 'Sole Developer',
-    description: 'Dynasty fantasy football analytics dashboard for Sleeper leagues. Surfaces standings, matchups, roster analysis, and draft data beyond the native app.',
-    url: 'https://fantasyfootball.shwrk.com',
-    tags: ['analytics', 'api'],
-  },
-];
+import { projects } from '../data/site';
 ---
 
 <section id="projects" class="py-24 md:py-32 px-8 md:px-16 lg:px-24 reveal-section opacity-0 translate-y-8 transition-all duration-700 ease-out border-t border-border">
   <p class="font-mono text-accent text-xs tracking-widest mb-12">[PROJECTS]</p>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-    {projects.map((project) => (
+    {projects.map((project, i) => (
       <a
         href={project.url}
         target="_blank"
@@ -71,7 +14,7 @@ const projects = [
         class="group block bg-bg p-8 hover:bg-surface transition-colors duration-200"
       >
         <div class="flex items-start justify-between mb-6">
-          <span class="font-mono text-xs text-muted">{project.index}</span>
+          <span class="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4 text-border group-hover:text-muted transition-colors"
