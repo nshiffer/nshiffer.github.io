@@ -6,6 +6,7 @@
 
 - [PourMath](https://pourmath.com): Pour cost and pricing tools for bars and restaurants.
 - [LinkStreaks](https://linkstreaks.com): Gamified link-in-bio software for audience engagement.
+- [FettiAI](https://fettiai.com): AI-first party planning that creates an editable invitation and complete hosting plan from a plain-English event idea.
 - [Airjust](https://airjust.co): Flight compensation claims platform.
 - [SHWRK](https://shwrk.com): A development hub for web applications and data utilities.
 - [LNCH CTRL](https://lnchctrl.shwrk.co): Live rocket launch tracking dashboard.

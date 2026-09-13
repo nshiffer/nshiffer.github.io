@@ -57,6 +57,14 @@ export const projects: Project[] = [
     tags: ['saas', 'gamification'],
   },
   {
+    slug: 'fettiai',
+    name: 'FettiAI',
+    role: 'Founder & Sole Developer',
+    description: 'AI-first party planning that turns a plain-English event idea into an editable invitation, RSVP flow, budget, timeline, tasks, and hosting plan.',
+    url: 'https://fettiai.com',
+    tags: ['ai', 'event-planning'],
+  },
+  {
     slug: 'airjust',
     name: 'Airjust',
     role: 'Co-Founder & Lead Developer',
