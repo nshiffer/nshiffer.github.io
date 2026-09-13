@@ -1,0 +1,25 @@
+# Nick Shiffer
+
+> Nick Shiffer is a senior AI engineer and founder who builds LLM products, developer tools, and practical SaaS from idea through launch.
+
+## Projects
+
+- [PourMath](https://pourmath.com): Pour cost and pricing tools for bars and restaurants.
+- [LinkStreaks](https://linkstreaks.com): Gamified link-in-bio software for audience engagement.
+- [Airjust](https://airjust.co): Flight compensation claims platform.
+- [SHWRK](https://shwrk.com): A development hub for web applications and data utilities.
+- [LNCH CTRL](https://lnchctrl.shwrk.co): Live rocket launch tracking dashboard.
+- [Dev Converter](https://converter.shwrk.com): Privacy-first developer conversion tools that run in the browser.
+
+## About
+
+- [GitHub](https://github.com/nshiffer)
+- [LinkedIn](https://www.linkedin.com/in/nicholas-shiffer-9593a6175)
+
+## Books
+
+- [Mastering the Art of Generative Design](https://www.amazon.com/Mastering-Art-Generative-Comprehensive-Engineering/dp/B0C47DWL9C)
+- [Prompt Engineers Cookbook](https://www.amazon.com/Prompt-Engineers-Cookbook-Mastering-Generative-ebook/dp/B0C63VN3CT)
+- [AI Unleashed](https://www.amazon.com/AI-Unleased-Turbocharge-Business-Generative/dp/B0C87VK67Q)
+
+The portfolio describes Nick's work and links to the official project sites. Verify current product details on each linked site.

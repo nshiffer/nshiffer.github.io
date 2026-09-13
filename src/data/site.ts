@@ -77,7 +77,7 @@ export const projects: Project[] = [
     name: 'LNCH CTRL',
     role: 'Sole Developer',
     description: 'Retro mission-control dashboard for live rocket launch tracking. Pulls from The Space Devs API with real-time launch status and space news.',
-    url: 'https://nshiffer.github.io/space-tracker/',
+    url: 'https://lnchctrl.shwrk.co',
     tags: ['realtime', 'api'],
   },
   {
